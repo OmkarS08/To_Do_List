@@ -4,23 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <title>TO DO LIST</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-    <h1>
-        <%= KindOfDay %>
-    </h1>
-    <ul>
+    <div class="box" id="heading">
+        <h1>
+            <%= KindOfDay %>
+        </h1>
+    </div>
+    <div class="box">
+
         <% for(let i=0; i<newKindItem.length ;i++){ %>
-            <li>
-                <%= newKindItem[i] %>
-            </li>
+            <div class="item">
+                <input type="checkbox">
+                <p>
+                    <%= newKindItem[i] %>
+                </p>
+            </div>
             <% } %>
-    </ul>
-    <form action="/" method="post">
-        <input type="text" name="newInput">
-        <button type="submit" name="button">Add</button>
-    </form>
+                <form class="item" action="/" method="post">
+                    <input type="text" name="newInput" placeholder="New Item" autocomplete="off">
+                    <!--autocomplete is suggestion/earlier text in the text box-->
+                    <button type="submit" name="button">+</button>
+                </form>
+    </div>
+
+
+
+
 </body>
 
 </html>

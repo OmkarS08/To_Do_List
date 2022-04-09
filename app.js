@@ -4,9 +4,9 @@ const bodyParser = require("body-parser");
 
 /*--------------------Usage declairation------------------*/
 const app = express();
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // to use ejs file
 app.use(bodyParser.urlencoded({ extended: true })); // required for body-parser functioning
-
+app.use(express.static("public")); // it used to serve the css which is stored in public folder
 /*------------------------Global Variable Declairation------------------------------------*/
 
 let newitems = ["item1", "item2", "item3"]; // array is need to store multiple new item 
@@ -22,7 +22,7 @@ app.get("/", function(req, res) {
         year: 'numeric'
     }
     let day = today.toLocaleDateString("en-US", option);
-    // below code is used go displaying date in augmented manner
+    // Aboce code is used go displaying date in augmented manner
 
 
     res.render("list", { KindOfDay: day, newKindItem: newitems });
