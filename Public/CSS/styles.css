@@ -40,7 +40,7 @@ input:checked+p {
 }
 
 
-/*input checked is looking for list item which have checked along their name*/
+/*input checked is looking for list item which have checked along their*/
 
 input[type="checkbox"] {
     margin: 20px;
