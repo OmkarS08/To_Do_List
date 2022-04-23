@@ -10,7 +10,7 @@ app.set('view engine', 'ejs'); // to use ejs file
 app.use(bodyParser.urlencoded({ extended: true })); // required for body-parser functioning
 app.use(express.static("public")); // it used to serve the css which is stored in public folder
 /*--------------------DB connection-------------------------- */
-mongoose.connect("mongodb://localhost:27017/todolistDB", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://Testing:test123@cluster0.zekac.mongodb.net/todolistDB", { useNewUrlParser: true });
 
 /*--------------------mongo Schema-------------------------- */
 const listSchema = new mongoose.Schema({
