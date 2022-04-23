@@ -8,7 +8,7 @@ const _ = require("lodash");
 const app = express();
 app.set('view engine', 'ejs'); // to use ejs file
 app.use(bodyParser.urlencoded({ extended: true })); // required for body-parser functioning
-app.use(express.static("public")); // it used to serve the css which is stored in public folder
+app.use(express.static("Public")); // it used to serve the css which is stored in public folder
 /*--------------------DB connection-------------------------- */
 mongoose.connect("mongodb+srv://Testing:test123@cluster0.zekac.mongodb.net/todolistDB", { useNewUrlParser: true });
 
@@ -162,7 +162,9 @@ app.get("/home", function(req, res) {
 
 /*-------------------------Port Declairation---------------------*/
 let port = process.env.PORT;
-if (port == null || port == "") {
+if (port === null || port === "") {
     port = 3000;
 }
-app.listen(port);
+app.listen(port, function() {
+    console.log("success");
+});
