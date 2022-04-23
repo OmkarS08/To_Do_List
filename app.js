@@ -74,6 +74,7 @@ app.get("/", function(req, res) {
 app.post("/", function(req, res) {
     let newItem = req.body.newInput;
     let listname = req.body.list;
+
     const item = new List({
         name: newItem
     });
@@ -94,10 +95,11 @@ app.post("/", function(req, res) {
     }
 
 });
-
+// adding items to specific
 /*----------------------Acess parameter----------------------- */
 //DynamicRouting for new List 
 app.get("/:customListName", function(req, res) {
+    //:customlistName is use to get the "/_" from the header
     const customListname = _.capitalize(req.params.customListName);
     Lisst.findOne({ name: customListname }, function(err, result) {
         if (!err) {
@@ -119,17 +121,15 @@ app.get("/:customListName", function(req, res) {
         }
     });
 
-
-
-
 });
-
-/*--------------------Delete Items------------------------------ */
+// it is used to create dynamic pages with to new get routes
+/*--------------------Delete Items Delete Route------------------------------ */
 app.post("/delete", function(req, res) {
     const check = req.body.checkbox;
     const listName = req.body.listName;
     console.log(listName);
     if (listName === "Today") {
+        // to remove items from Today list only.
         List.findByIdAndRemove(check, function(err) {
             if (err) {
                 console.log(err);
@@ -140,6 +140,7 @@ app.post("/delete", function(req, res) {
         });
     } else {
         Lisst.findOneAndUpdate({ name: listName }, { $pull: { items: { _id: check } } }, function(err) {
+            //$pull is used to remove the particular item in array name"items"
             if (!err) {
                 res.redirect("/" + listName);
             }
