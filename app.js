@@ -161,7 +161,8 @@ app.get("/home", function(req, res) {
 });
 
 /*-------------------------Port Declairation---------------------*/
-app.listen(process.env.PORT, function() {
-    console.log("Succesfully connected");
-});
-//ddd
+let port = process.env.PORT;
+if (port == null || port == "") {
+    port = 3000;
+}
+app.listen(port);
